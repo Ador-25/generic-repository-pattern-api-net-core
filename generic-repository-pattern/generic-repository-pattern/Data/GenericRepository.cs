@@ -28,11 +28,23 @@ namespace generic_repository_pattern.Data
             return await _entities.ToListAsync();
         }
 
-        // Since no base, No Id
-/*        public async Task<T> GetByIdAsync(int id)
+        public async Task<IEnumerable<T>> GetAllByConditionAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _entities.SingleOrDefaultAsync(s => s.Id == id);
-        }*/
+            return await _entities
+                .Where(predicate)
+                .ToListAsync();
+        }
+
+        // Since no base, No Id
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _entities.FindAsync(id);
+        }
+
+        public async Task<T> GetByIdAsync(string username)
+        {
+            return await _entities.FindAsync(username);
+        }
 
         public async Task<bool> SaveChangesAsync()
         {
