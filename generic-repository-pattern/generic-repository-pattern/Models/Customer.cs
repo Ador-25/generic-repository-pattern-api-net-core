@@ -12,5 +12,7 @@ namespace generic_repository_pattern.Models
         public string CustomerEmail { get; set; }
         [Required]
         public string CustomerAddress { get; set; }
+
+        ICollection<CustomerPurchasesProduct> customerPurchasesProducts { get; set; }
     }
 }

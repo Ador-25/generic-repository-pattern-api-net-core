@@ -14,6 +14,7 @@ namespace generic_repository_pattern.Models
         public string ProductDescription { get; set; }
         
         public Shop? Shop { get; set; }
+        IList<CustomerPurchasesProduct> customerPurchasesProducts { get; set; }
 
     }
 }
